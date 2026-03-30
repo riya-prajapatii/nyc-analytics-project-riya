@@ -1,9 +1,10 @@
 version: 2
+
 sources:
-  - name: raw
-    description: Raw data loaded from NYC Open Data
+  - name: raw_311
+    description: Raw data loaded from NYC Open Data for 311 DOT service requests
     database: riya-gcp-1
-    schema: nyc_311_raw_data 
+    schema: nyc_311_raw_data
     tables:
       - name: source_dot_service_requests_history
         description: |
@@ -40,7 +41,7 @@ sources:
           - name: longitude
             description: Longitude coordinate
           - name: address_type
-            description: 'Type of address (e.g., ADDRESS, INTERSECTION, BLOCKFACE)'
+            description: Type of address (e.g., ADDRESS, INTERSECTION, BLOCKFACE)
           - name: bbl
             description: Borough Block and Lot number (NYC tax lot id)
           - name: borough
@@ -90,6 +91,11 @@ sources:
           - name: landmark
             description: Nearby landmark or point of interest
 
+  - name: raw_restaurants
+    description: Raw data loaded from NYC Open Data for restaurant applications
+    database: riya-gcp-1
+    schema: nyc_hw3_raw_data
+    tables:
       - name: source_nyc_open_restaurant_apps
         description: |
           NYC Open Restaurant Applications (Historic).
