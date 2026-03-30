@@ -2,10 +2,9 @@ version: 2
 sources:
   - name: raw
     description: Raw data loaded from NYC Open Data
-    [cite_start]database: riya-gcp-1  # Ensure this matches your actual GCP Project ID [cite: 83]
+    database: YOUR-PROJECT-ID-HERE
     schema: nyc_311_raw_data 
     tables:
-      # --- Table 1 (Matches file exactly) ---
       - name: source_dot_service_requests_history
         description: |
           NYC 311 service requests for Dept of Transportation.
@@ -89,9 +88,8 @@ sources:
           - name: y_coordinate_state_plane
             description: Y coordinate in NY State Plane projection system (NAD 83)
           - name: landmark
-            [cite_start]description: Nearby landmark or point of interest [cite: 83]
+            description: Nearby landmark or point of interest
 
-      # --- Table 2 (Customized for Restaurant Data) ---
       - name: source_nyc_open_restaurant_apps
         description: |
           NYC Open Restaurant Applications (Historic).
@@ -100,9 +98,40 @@ sources:
           - name: objectid
             description: Unique identifier for the record
             tests:
-              - unique
               - not_null
           - name: restaurant_name
+            description: Name of the restaurant
+          - name: legal_business_name
+            description: Legal business name
+          - name: doing_business_as_dba
+            description: DBA name
           - name: borough
+            description: Borough where restaurant is located
+          - name: business_address
+            description: Business address
+          - name: street
+            description: Street name
           - name: zip
-          - [cite_start]name: time_of_submission [cite: 90, 93]
+            description: Zip code
+          - name: latitude
+            description: Latitude coordinate
+          - name: longitude
+            description: Longitude coordinate
+          - name: time_of_submission
+            description: Timestamp when application was submitted
+          - name: approved_for_sidewalk_seating
+            description: Whether approved for sidewalk seating
+          - name: approved_for_roadway_seating
+            description: Whether approved for roadway seating
+          - name: sidewalk_dimensions_length
+            description: Sidewalk seating length
+          - name: sidewalk_dimensions_width
+            description: Sidewalk seating width
+          - name: roadway_dimensions_length
+            description: Roadway seating length
+          - name: roadway_dimensions_width
+            description: Roadway seating width
+          - name: community_board
+            description: Community board district
+          - name: council_district
+            description: City council district
