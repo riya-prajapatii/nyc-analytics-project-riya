@@ -74,7 +74,7 @@ cleaned AS (
 
        -- Clearer column name as well for this one
        CAST(open_data_channel_type AS STRING) AS method_of_submission,
-
+       
        -- Metadata
        CURRENT_TIMESTAMP() AS _stg_loaded_at
 
