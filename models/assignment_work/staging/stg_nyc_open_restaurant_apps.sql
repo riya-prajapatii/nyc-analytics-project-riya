@@ -14,8 +14,7 @@ cleaned AS (
         -- Restaurant info
         CAST(restaurant_name AS STRING) AS restaurant_name,
 
-        -- Date (IMPORTANT: keep clean + consistent name)
-        CAST(time_of_submission AS TIMESTAMP) AS time_of_submission,
+       -- CAST(`Time of Submission` AS TIMESTAMP) AS time_of_submission
 
         -- Location cleaning (zip)
         CASE
@@ -49,13 +48,13 @@ cleaned AS (
 
     -- Filters
     WHERE objectid IS NOT NULL
-      AND time_of_submission IS NOT NULL
+     -- AND `Time of Submission` IS NOT NULL
       AND borough IS NOT NULL
 
     -- Deduplicate
     QUALIFY ROW_NUMBER() OVER (
         PARTITION BY objectid 
-        ORDER BY time_of_submission DESC
+       -- ORDER BY `Time of Submission` DESC
     ) = 1
 )
 
