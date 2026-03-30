@@ -44,6 +44,7 @@ cleaned AS (
         -- Metadata
         CURRENT_TIMESTAMP() AS _stg_loaded_at
 
+   
     FROM source
 
     -- Filters
