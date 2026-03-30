@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: raw_311
-    description: Raw data loaded from NYC Open Data for 311 DOT service requests
+    description: Raw data loaded from NYC Open Data for 311 DOT requests
     database: riya-gcp-1
     schema: nyc_311_raw_data
     tables:
@@ -41,15 +41,15 @@ sources:
           - name: longitude
             description: Longitude coordinate
           - name: address_type
-            description: Type of address (e.g., ADDRESS, INTERSECTION, BLOCKFACE)
+            description: Type of address
           - name: bbl
-            description: Borough Block and Lot number (NYC tax lot id)
+            description: Borough Block and Lot number
           - name: borough
             description: NYC borough where incident occurred
           - name: bridge_highway_direction
-            description: Direction on bridge or highway (e.g. Northbound)
+            description: Direction on bridge or highway
           - name: bridge_highway_name
-            description: Name of bridge or highway where incident occurred
+            description: Name of bridge or highway
           - name: bridge_highway_segment
             description: Specific segment of bridge or highway
           - name: city
@@ -65,79 +65,67 @@ sources:
           - name: facility_type
             description: Type of facility where incident occurred
           - name: intersection_street_1
-            description: First street forming intersection where incident occurred
+            description: First intersection street
           - name: intersection_street_2
-            description: Second street forming intersection where incident occurred
+            description: Second intersection street
           - name: open_data_channel_type
-            description: How request was submitted (ONLINE, PHONE, MOBILE, etc.)
+            description: How request was submitted
           - name: park_borough
             description: Borough of park where incident occurred
           - name: park_facility_name
-            description: Name of park facility where incident occurred
+            description: Name of park facility
           - name: resolution_action_updated_date
             description: Date when resolution action was last updated
           - name: resolution_description
             description: Description of how the request was resolved
           - name: road_ramp
-            description: Road ramp identifier where incident occurred
+            description: Road ramp identifier
           - name: status
-            description: Current status of request (Open, Closed, In Progress, etc.)
+            description: Current status of request
           - name: street_name
             description: Name of street where incident occurred
           - name: x_coordinate_state_plane
-            description: X coordinate in NY State Plane projection system (NAD 83)
+            description: X coordinate in NY State Plane projection
           - name: y_coordinate_state_plane
-            description: Y coordinate in NY State Plane projection system (NAD 83)
+            description: Y coordinate in NY State Plane projection
           - name: landmark
             description: Nearby landmark or point of interest
 
   - name: raw_restaurants
-    description: Raw data loaded from NYC Open Data for restaurant applications
+    description: Raw data loaded from NYC Open Data for Open Restaurant applications
     database: riya-gcp-1
     schema: nyc_hw3_raw_data
     tables:
       - name: source_nyc_open_restaurant_apps
         description: |
-          NYC Open Restaurant Applications (Historic).
-          One row per application submitted by a restaurant.
+          NYC Open Restaurant Applications.
+          One row per application record.
         columns:
           - name: objectid
-            description: Unique identifier for the record
+            description: Unique row identifier
             tests:
               - not_null
-          - name: restaurant_name
-            description: Name of the restaurant
-          - name: legal_business_name
-            description: Legal business name
-          - name: doing_business_as_dba
-            description: DBA name
-          - name: borough
-            description: Borough where restaurant is located
+          - name: application_id
+            description: Application ID
+          - name: time_of_submission
+            description: Date and time the application was submitted
+          - name: seating_interest_sidewalk
+            description: Seating interest for sidewalk seating
+          - name: seating_interest_roadway
+            description: Seating interest for roadway seating
+          - name: approved_for_sidewalk_seating
+            description: Whether sidewalk seating was approved
+          - name: approved_for_roadway_seating
+            description: Whether roadway seating was approved
+          - name: business_name
+            description: Name of the business
           - name: business_address
-            description: Business address
-          - name: street
-            description: Street name
-          - name: zip
-            description: Zip code
+            description: Address of the business
+          - name: borough
+            description: Borough
+          - name: zip_code
+            description: ZIP code
           - name: latitude
             description: Latitude coordinate
           - name: longitude
             description: Longitude coordinate
-          - name: time_of_submission
-            description: Timestamp when application was submitted
-          - name: approved_for_sidewalk_seating
-            description: Whether approved for sidewalk seating
-          - name: approved_for_roadway_seating
-            description: Whether approved for roadway seating
-          - name: sidewalk_dimensions_length
-            description: Sidewalk seating length
-          - name: sidewalk_dimensions_width
-            description: Sidewalk seating width
-          - name: roadway_dimensions_length
-            description: Roadway seating length
-          - name: roadway_dimensions_width
-            description: Roadway seating width
-          - name: community_board
-            description: Community board district
-          - name: council_district
-            description: City council district
